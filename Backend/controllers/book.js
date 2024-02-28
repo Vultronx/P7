@@ -11,6 +11,7 @@ exports.createBook = (req, res, next) => {
         userId: req.auth.userId,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
+    console.log("constante book créée !");
   
     book.save()
     .then(() => { res.status(201).json({message: 'Objet enregistré !'})})
