@@ -13,7 +13,7 @@ router.post('/', auth, multerSharp, bookCtrl.createBook); //multer
 router.get('/:id', bookCtrl.getOneBook);
 router.put('/:id', auth, multer, bookCtrl.modifyBook); //multer
 router.delete('/:id', auth, bookCtrl.deleteBook);
-//router.post("/:id/rating", bookCtrl.createRating);
-//router.get("/bestrating", bookCtrl.getBestRating);
+router.post("/:id/rating", auth, bookCtrl.createRating);
+router.get("/bestrating", bookCtrl.getBestRating);
 
 module.exports = router;
