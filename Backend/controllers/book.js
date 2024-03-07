@@ -90,21 +90,6 @@ exports.getAllBook = (req, res, next) => {
   );
 };
 
-exports.getBestRating = (req, res, next) => {
-	Book.find()
-		.sort({ averageRating: -1 })
-		.limit(3)
-		.then((books) => {
-      res.status(200).json(books);
-    }).catch(
-      (error) => {
-        res.status(400).json({
-          error: error
-        });
-      }
-    );
-};
-
 exports.createRating = (req, res, next) => {
 	Book.findOne({ _id: req.params.id })
 		.then(book => {
@@ -135,4 +120,19 @@ exports.createRating = (req, res, next) => {
 		.catch(error => {
 			return res.status(500).json({ error });
 		});
+};
+
+exports.getBestRating = (req, res, next) => {
+	Book.find()
+		.sort({ averageRating: -1 })
+		.limit(3) //limité au 3 premiers resultats
+		.then((books) => {
+      res.status(200).json(books);
+    }).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
 };
