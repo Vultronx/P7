@@ -8,7 +8,9 @@ const userRoutes = require('./routes/user');
 const mongoose = require('mongoose');
 const path = require('path');
 
-mongoose.connect('mongodb+srv://gaetangobin42:VwzfKoHFEdI4MHUQ@cluster0.ej01hy4.mongodb.net/?retryWrites=true&w=majority')
+require('dotenv').config()
+
+mongoose.connect(process.env.MONGO_SERVER)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'))
   .catch(error => handleError(error));
