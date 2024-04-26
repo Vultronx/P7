@@ -20,7 +20,7 @@ const path = require('path');
 require('dotenv').config();
 
 //* Connexion à la BDD par l'intermédiaire de Mongoose
-//* L'adresse de la BDD est stockée dans un fichier ENV afin d'être sécurisée
+//* (L'adresse de la BDD est stockée dans un fichier ENV afin d'être sécurisée)
 mongoose.connect(process.env.MONGO_SERVER)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'))
